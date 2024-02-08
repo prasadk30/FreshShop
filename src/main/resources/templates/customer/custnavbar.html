@@ -1,0 +1,40 @@
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<nav class="navbar navbar-expand-md bg-dark navbar-dark navbar-fixed-top" th:fragment="custnavbar">
+      <!-- Brand -->
+	  <a class="navbar-brand" href="#">My Project</a>
+	  
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+	    <span class="navbar-toggler-icon"></span></button>
+	  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+	 	<ul class="nav navbar-nav">
+		 	<li th:classappend="${module == 'home' ? 'active' : ''}" class="navitem">
+              <a href="#" th:href="@{/home}" class="nav-link">Home</a>
+            </li>
+		 	
+		 	<li th:classappend="${module == 'home' ? 'active' : ''}" class="navitem">
+		 		<a href="#" th:href="@{/user/cart/list}" class="nav-link">Cart</a>
+		 	</li>
+		 	
+		 	<li th:classappend="${module == 'home' ? 'active' : ''}" class="navitem">
+		 		<a href="#" th:href="@{/user/orderlist}" class="nav-link">Order History</a>
+		 	</li>
+		 	
+		 	</ul>
+	 	<ul>
+	 	          <li th:if="${#authorization.expression('isAuthenticated()')}" class="navitem">
+              <a href="#" th:href="@{#}"  class="nav-link">
+              <span th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</span>
+              </a>             
+  
+            </li>
+	 	<li th:if="${#authorization.expression('isAuthenticated()')}" class="navitem">
+              <a href="/logout" th:href="@{#}" onclick="$('#form').submit();" class="nav-link">
+                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
+              </a>
+             <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
+            </li>
+	 	</ul>
+	 	
+	 </div>
+	 </nav>
+   </html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<div th:replace="navbar :: navbar"></div>
+<head lang="en" th:replace="header :: header"></head>
+
+<head>
+<title>Login Register</title>
+</head>
+
+<body>
+
+<h1>Welcome To Fresh Shop</h1>
+
+<div class= "container">
+<form th:action="@{/reg}" method="post" th:object="${user}">
+
+<div class="form-group"><lable>Name:<input type="text" name="name" class="form-control"/></lable>
+<p th:each:"error:${#Fields.errors('name')}" th:text="${error}">Validation error</p>
+</div>
+
+<div class="form-group"><lable>MobileNo:<input type="text" name="mobileno" class="form-control"/></lable>
+<p th:each:"error:${#Fields.errors('mobileno')}" th:text="${error}">Validation error</p>
+</div>
+
+<div class="form-group"><lable>UserName:<input type="text" name="username" class="form-control"/></lable>
+<p th:each:"error:${#Fields.errors('username')}" th:text="${error}">Validation error</p>
+</div>
+
+<div class="form-group"><lable>Password:<input type="Password" name="password" class="form-control"/></lable>
+<p th:each:"error:${#Fields.errors('password')}" th:text="${error}">Validation error</p>
+</div>
+
+<div class="form-group"><input type="submit" value="Sign Up" class="btn btn-primary"/></div>
+</form>
+
+</div>
+
+<head lang="en"th:replace="footer :: footer"></head>
+</body>
+</html>

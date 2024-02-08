@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<div th:replace="customer/custnavbar :: custnavbar"></div>
+<h1>Shopping Cart</h1>
+<hr>
+
+<div class= "container">
+<form th:action="@{/user/cart}" method="post"> <!-- customer -->
+
+<table class="table table-bordered">
+<tr>
+<th>ItemImage</th>
+<th>ItemID</th>
+<th>ItemName</th>
+<th>Category</th>
+<th>ItemPrice</th>
+<th>Qty</th>
+<th>Total</th>
+<th>Actions</th>
+</tr>
+
+<tr th:each="cat : ${carts}"> <!-- changed carts as cart -->
+<td><img th:src="@{/admin/item/itemuploads/{fname}(fname=${cat.ItemImage})}" width="60" height="60" alt="NA" class="rounded-circle"/></td>
+<td th:text="${cat.ItemId}"></td>
+<td th:text="${cat.ItemName}"></td>
+<td th:text="${cat.CategoryName}"></td>
+<td th:text="${cat.ItemPrice}"></td>
+<td><input type="number" value="${cat.Qty}" th:id="i"/></td>
+<td th:text="${cat.ItemPrice*cat.Qty}"></td>
+<td>
+
+<a href="(${cat.CartId},<%=i%>);" class="btn btn-info">Update</a>
+<a th:href="@{/user/cart/cartdel{id}(id=${cat.CartId})}" class="btn btn-danger">Delete</a>
+</td>
+</tr>
+
+
+<tr>
+<td colspan="7" align="right"><strong>Total Amount: ${totol}</strong> </td>
+<td><a th:href="@{/customer/checkout" class="btn btn-success">Checkout</a></td>
+</tr>
+
+</table>
+
+</form>
+</div>
+
+</html>

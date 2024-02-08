@@ -1,0 +1,56 @@
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+<h2 align="center">Your Order</h2>
+<hr>
+<br>
+<table class="table table-bordered">
+<tr>
+<td colspan="4" align="center"><h4>Order Information</h4></td>
+</tr>
+<tr>
+<td>Order No</td><td th:text="${ords.orderid}"></td>
+<td>Order Date</td><td th:text="${ords.orderdate}"></td>
+
+</tr>
+<tr>
+<td>Order Amount</td><td th:text="${ords.orderamount}"></
+<td>Order Status</td><td th:text="${ords.orderstatus}"></td>
+</tr>
+</table>
+<table class="table table-bordered">
+<tr>
+<td colspan="5" align="center"><h4>Order Items</h4></td>
+</tr>
+<tr>
+<td>Item ID</td>
+<td>Item Name</td>
+<td>Item Price</td>
+<td>Item Qty</td>
+<td>Total Amount</td>
+</tr>
+<tr th:each="ob: ${oit}">
+<tr>
+<td th:text="${ob[1]}"></td>
+<td th:text="${ob[2]}"></td>
+<td th:text="${ob[3]}"></td>
+<td th:text="${ob[4]}"></td>
+<td th:text="${ob[5]}"></td>
+
+
+
+
+
+<!-- <td>${ob[2]}</td>
+<td>${ob[3]}</td>
+<td>${ob[4]}</td>
+<td>${ob[5]}</td> -->
+</tr>
+
+</table>
+
+
+<button type="button" onclick="window.location='/admin/orderlist';" class="btn btn-primary">Back to Orders History</button>
+
+
+

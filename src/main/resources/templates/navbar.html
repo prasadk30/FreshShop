@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark navbar-fixed-top" th:fragment="navbar">
+      <!-- Brand -->
+	  <a class="navbar-brand" href="#">My Project</a>
+
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="nav navbar-nav">
+            <li th:classappend="${module == 'home' ? 'active' : ''}" class="navitem">
+              <a href="#" th:href="@{/}" class="nav-link">Home</a>
+            </li>
+            
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li th:if="${#authorization.expression('!isAuthenticated()')}" class="navitem">
+              <a href="/login" th:href="@{/login}" class="nav-link" >
+                <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Sign in
+              </a>
+            </li>
+            <li th:if="${#authorization.expression('!isAuthenticated()')}" class="navitem">
+              <a href="/reg" th:href="@{/reg}" class="nav-link" >
+                <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Sign up
+              </a>
+            </li>
+            <li th:if="${#authorization.expression('isAuthenticated()')}" class="navitem">
+              <a href="#" th:href="@{#}"  class="nav-link"></a>             
+             
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
